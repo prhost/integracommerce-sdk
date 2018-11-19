@@ -1,0 +1,23 @@
+{
+  "name": "prhost/integracommerce-sdk",
+  "description": "SDK para integracao com IntegraCommerce",
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kallef Alexandre",
+      "email": "kallef@orbitaldev.com.br"
+    }
+  ],
+  "require": {
+    "php" : ">= 7.1",
+    "guzzlehttp/guzzle": "^6.3",
+    "illuminate/support": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "IntegraCommerce\\": "src/"
+    }
+  }
+}
