@@ -14,7 +14,7 @@ class MarketplaceStructure extends EndpointBase
      *
      * @return MarketplaceStructureModel
      */
-    public function getMarketplaceStructure(string $marketplaceName, string $parentId = '0', int $page = 1, int $perPage = 100)
+    public function getMarketplaceStructures(string $marketplaceName, string $parentId = '0', int $page = 1, int $perPage = 100): MarketplaceStructureModel
     {
 
         $response = $this->request('GET', 'MarketplaceStructure', [

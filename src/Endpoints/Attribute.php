@@ -14,7 +14,7 @@ class Attribute extends EndpointBase
      *
      * @return AttributeModel
      */
-    public function getAttribute(bool $isSku = true, bool $isProduct = true, int $page = 1, int $perPage = 100)
+    public function getAttributes(bool $isSku = true, bool $isProduct = true, int $page = 1, int $perPage = 100)
     {
 
         $response = $this->request('GET', 'Attribute', [

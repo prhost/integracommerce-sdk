@@ -14,7 +14,7 @@ class EndPointLimit extends EndpointBase
      *
      * @return EndPointLimitModel
      */
-    public function getPointLimit(): EndPointLimitModel
+    public function getPointLimits(): EndPointLimitModel
     {
         $pointLimits = $this->request('GET', 'EndPointLimit')->getResponse();
         return new EndPointLimitModel($pointLimits);

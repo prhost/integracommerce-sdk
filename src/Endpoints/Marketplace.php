@@ -14,7 +14,7 @@ class Marketplace extends EndpointBase
      *
      * @return MarketplaceModel
      */
-    public function getMarketplace(): MarketplaceModel
+    public function getMarketplaces(): MarketplaceModel
     {
         $marketplaces = $this->request('GET', 'Marketplace')->getResponse();
         return new MarketplaceModel($marketplaces);
