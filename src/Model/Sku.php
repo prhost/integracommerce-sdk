@@ -250,65 +250,65 @@ class Sku extends ModelBase
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getHeight(): int
+    public function getHeight(): float
     {
         return $this->height;
     }
 
     /**
-     * @param int $height
+     * @param float $height
      */
-    public function setHeight(int $height): void
+    public function setHeight(float $height): void
     {
         $this->height = $height;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getWidth(): int
+    public function getWidth(): float
     {
         return $this->width;
     }
 
     /**
-     * @param int $width
+     * @param float $width
      */
-    public function setWidth(int $width): void
+    public function setWidth(float $width): void
     {
         $this->width = $width;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getLength(): int
+    public function getLength(): float
     {
         return $this->length;
     }
 
     /**
-     * @param int $length
+     * @param float $length
      */
-    public function setLength(int $length): void
+    public function setLength(float $length): void
     {
         $this->length = $length;
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getWeight(): int
+    public function getWeight(): float
     {
         return $this->weight;
     }
 
     /**
-     * @param int $weight
+     * @param float $weight
      */
-    public function setWeight(int $weight): void
+    public function setWeight(float $weight): void
     {
         $this->weight = $weight;
     }
