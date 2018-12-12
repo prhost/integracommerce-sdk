@@ -9,29 +9,29 @@ use IntegraCommerce\Classes\ModelBase;
 class Product extends ModelBase
 {
     public static $attributeMap = [
-        "IdProduct" => "string",
-        "Name" => "string",
-        "Code" => "string",
-        "Brand" => "string",
-        "NbmOrigin" => "integer",
-        "NbmNumber" => "integer",
-        "WarrantyTime" => "integer",
-        "Active" => "boolean",
-        "Categories" => [
-            "Id" => "string",
-            "Name" => "string",
+        "IdProduct"             => "string",
+        "Name"                  => "string",
+        "Code"                  => "string",
+        "Brand"                 => "string",
+        "NbmOrigin"             => "integer",
+        "NbmNumber"             => "integer",
+        "WarrantyTime"          => "integer",
+        "Active"                => "boolean",
+        "Categories"            => [
+            "Id"       => "string",
+            "Name"     => "string",
             "ParentId" => "string"
         ],
         "MarketplaceStructures" => [
             [
-                "Id" => "string",
-                "Name" => "string",
+                "Id"       => "string",
+                "Name"     => "string",
                 "ParentId" => "string"
             ]
         ],
-        "Attributes" => [
+        "Attributes"            => [
             [
-                "Name" => "string",
+                "Name"  => "string",
                 "Value" => "string"
             ]
         ]
@@ -58,7 +58,9 @@ class Product extends ModelBase
     protected $brand;
 
     /**
-     * @var string
+     * Origem da Mercadoria (0 - Nacional e 1 - Importada)
+     *
+     * @var bool
      */
     protected $nbmOrigin;
 
@@ -92,25 +94,49 @@ class Product extends ModelBase
      */
     protected $attributes;
 
-    public function __construct()
+    public function __construct(\stdClass $product = null)
     {
+        if ($product) {
+            $this->setIdProduct($product->IdProduct);
+            $this->setName($product->Name);
+            $this->setCode($product->Code);
+            $this->setBrand($product->Brand);
+            $this->setNbmNumber((string)$product->NbmNumber);
+            $this->setWarrantyTime((int)$product->WarrantyTime);
+            $this->setActive($product->Active);
 
+            foreach ($product->Categories as $category) {
+                $categoryModel = new \IntegraCommerce\Model\Category();
+                $categoryModel->setId($category->Id);
+                $categoryModel->setName($category->Name);
+                $categoryModel->setParentId((int)$category->ParentId);
+                $categories[] = $categoryModel;
+            }
+            $this->setCategories(new Collection($categories));
+
+            $marketplaceStructures = new Collection();
+            $marketplaceStructureModel = new MarketplaceStructure();
+            $marketplaceStructureModel->setMarketplaceStructures($marketplaceStructures);
+            $this->setMarketplaceStructures($marketplaceStructures);
+
+            $this->setAttributes(new Collection());
+        }
     }
 
     /**
      * @return string
      */
-    public function getId(): string
+    public function getIdProduct(): string
     {
-        return $this->id;
+        return $this->idProduct;
     }
 
     /**
-     * @param string $id
+     * @param string $idProduct
      */
-    public function setId(string $id): void
+    public function setIdProduct(string $idProduct): void
     {
-        $this->id = $id;
+        $this->idProduct = $idProduct;
     }
 
     /**
@@ -127,5 +153,151 @@ class Product extends ModelBase
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code): void
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param string $brand
+     */
+    public function setBrand(string $brand): void
+    {
+        $this->brand = $brand;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbmOrigin(): string
+    {
+        return $this->nbmOrigin;
+    }
+
+    /**
+     * Origem da Mercadoria (0 - Nacional e 1 - Importada)
+     *
+     * @param bool $nbmOrigin
+     */
+    public function setNbmOrigin(bool $nbmOrigin): void
+    {
+        $this->nbmOrigin = $nbmOrigin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNbmNumber(): string
+    {
+        return $this->nbmNumber;
+    }
+
+    /**
+     * @param string $nbmNumber
+     */
+    public function setNbmNumber(string $nbmNumber): void
+    {
+        $this->nbmNumber = $nbmNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWarrantyTime(): string
+    {
+        return $this->warrantyTime;
+    }
+
+    /**
+     * @param string $warrantyTime
+     */
+    public function setWarrantyTime(string $warrantyTime): void
+    {
+        $this->warrantyTime = $warrantyTime;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param Collection $categories
+     */
+    public function setCategories(Collection $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getMarketplaceStructures(): Collection
+    {
+        return $this->marketplaceStructures;
+    }
+
+    /**
+     * @param Collection $marketplaceStructures
+     */
+    public function setMarketplaceStructures(Collection $marketplaceStructures): void
+    {
+        $this->marketplaceStructures = $marketplaceStructures;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAttributes(): Collection
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param Collection $attributes
+     */
+    public function setAttributes(Collection $attributes): void
+    {
+        $this->attributes = $attributes;
     }
 }

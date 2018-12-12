@@ -44,12 +44,10 @@ class Category extends EndpointBase
         return new CategoriesModel($response);
     }
 
-    public function createCategories(Categories $categories): bool
+    public function createCategories(Categories $categories)
     {
         $this->request('POST', 'Category', [
             'json' => $categories->getCategories()->toArray()
         ]);
-
-        return true;
     }
 }

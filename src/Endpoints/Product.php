@@ -9,16 +9,16 @@ use \IntegraCommerce\Model\Product as ProductModel;
 class Product extends EndpointBase
 {
     /**
-     * Método utilizado para recuperar uma categoria pelo ID.
-     * @see https://api.integracommerce.com.br/swagger/ui/index#!/Category/Category_GetById
+     * Método utilizado para recuperar um produto específico.
+     * @see https://api.integracommerce.com.br/swagger/ui/index#!/Product/Product_GetById
      *
-     * @param string $id Id da categoria
-     * @return CategoryModel
+     * @param string $id Id do produto
+     * @return ProductModel
      */
-    public function getCategoryById(string $id): CategoryModel
+    public function getProduct(string $id): ProductModel
     {
-        $response = $this->request('GET', 'Category/' . $id)->getResponse();
-        return new CategoryModel($response);
+        $response = $this->request('GET', 'Product/' . $id)->getResponse();
+        return new ProductModel($response);
     }
 
     /**
@@ -26,41 +26,48 @@ class Product extends EndpointBase
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Product/Product_Create
      *
      * @param ProductModel $product
-     * @return Response
      */
     public function createProduct(ProductModel $product): Response
     {
-        $response = $this->request('POST', 'Product', [
+        return $this->request('POST', 'Product', [
             'json' => [
-                "IdProduct" => "string",
-                "Name" => "string",
-                "Code" => "string",
-                "Brand" => "string",
-                "NbmOrigin" => 1,
-                "NbmNumber" => 1,
-                "WarrantyTime" => 1,
-                "Active" => true,
-                "Categories" => [
-                    "Id" => "string",
-                    "Name" => "string",
-                    "ParentId" => "string"
-                ],
-                "MarketplaceStructures" => [
-                    [
-                        "Id" => "string",
-                        "Name" => "string",
-                        "ParentId" => "string"
-                    ]
-                ],
-                "Attributes" => [
-                    [
-                        "Name" => "string",
-                        "Value" => "string"
-                    ]
-                ]
+                "IdProduct"             => $product->getIdProduct(),
+                "Name"                  => $product->getName(),
+                "Code"                  => $product->getCode(),
+                "Brand"                 => $product->getBrand(),
+                "NbmOrigin"             => (int)$product->getNbmOrigin(),
+                "NbmNumber"             => $product->getNbmNumber(),
+                "WarrantyTime"          => $product->getWarrantyTime(),
+                "Active"                => $product->isActive(),
+                "Categories"            => $product->getCategories()->toArray(),
+                "MarketplaceStructures" => $product->getMarketplaceStructures()->toArray(),
+                "Attributes"            => $product->getAttributes()->toArray(),
             ]
-        ])->getResponse();
+        ]);
+    }
 
-        return $response;
+    /**
+     * Método utilizado para atualizar um produto específico.
+     * @see https://api.integracommerce.com.br/swagger/ui/index#!/Product/Product_Update
+     *
+     * @param ProductModel $product
+     */
+    public function updateProduct(ProductModel $product): Response
+    {
+        return $this->request('PUT', 'Product', [
+            'json' => [
+                "IdProduct"             => $product->getIdProduct(),
+                "Name"                  => $product->getName(),
+                "Code"                  => $product->getCode(),
+                "Brand"                 => $product->getBrand(),
+                "NbmOrigin"             => (int)$product->getNbmOrigin(),
+                "NbmNumber"             => $product->getNbmNumber(),
+                "WarrantyTime"          => $product->getWarrantyTime(),
+                "Active"                => $product->isActive(),
+                "Categories"            => $product->getCategories()->toArray(),
+                "MarketplaceStructures" => $product->getMarketplaceStructures()->toArray(),
+                "Attributes"            => $product->getAttributes()->toArray(),
+            ]
+        ]);
     }
 }

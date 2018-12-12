@@ -39,7 +39,7 @@ class ApiException extends Exception
      */
     public function getErrors()
     {
-        $errors = $this->response->getResponse()->Errors;
+        $errors = $this->response->getResponse()->Errors ?? null;
 
         if ($errors != null && is_array($errors)) {
             foreach ($errors as $error) {
