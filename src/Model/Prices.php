@@ -17,7 +17,7 @@ class Prices extends ModelBase
     ];
 
     /**
-     * @var Collection[Price]
+     * @var Collection
      */
     protected $prices;
 

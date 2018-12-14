@@ -1,3 +1,3 @@
 # SDK PHP para API IntegraCommerce
 
-WIP
+### Work in progress
