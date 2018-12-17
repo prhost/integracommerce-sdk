@@ -3,24 +3,39 @@
 
 namespace IntegraCommerce\Model;
 
-use IntegraCommerce\Classes\Collection;
 use IntegraCommerce\Classes\ModelBase;
 
 class Marketplace extends ModelBase
 {
-    static $attributeMap = array(
-        'Marketplaces' => [
-            'Name' => 'string',
-        ]
-    );
+    static $attributeMap = [
+        'Name' => 'string',
+    ];
 
     /**
-     * @var Collection
+     * @var string
      */
-    public $marketplaces;
+    public $name;
 
-    public function __construct(\StdClass $marketplaces)
+    public function __construct(\StdClass $marketplace = null)
     {
-        $this->marketplaces = new Collection($marketplaces->Marketplaces);
+        if ($marketplace) {
+            $this->name = $marketplace->Name;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 }

@@ -5,9 +5,12 @@ namespace IntegraCommerce\Model;
 
 use IntegraCommerce\Classes\Collection;
 use IntegraCommerce\Classes\ModelBase;
+use IntegraCommerce\Traits\Paginable;
 
 class Categories extends ModelBase
 {
+    use Paginable;
+
     protected static $attributeMap = [
         "Categories" => [
             "Id" => "string",
@@ -34,16 +37,16 @@ class Categories extends ModelBase
      */
     protected $categories;
 
-    public function __construct(\StdClass $data = null)
+    public function __construct(\StdClass $categories = null)
     {
         $this->categories = new Collection();
 
-        if ($data) {
-            $this->page = $data->Page;
-            $this->perPage = $data->PerPage;
-            $this->total = $data->Total;
+        if ($categories) {
+            $this->page = $categories->Page;
+            $this->perPage = $categories->PerPage;
+            $this->total = $categories->Total;
 
-            foreach ($data->Categories as $category) {
+            foreach ($categories->Categories as $category) {
                 $this->categories->push(new Category($category));
             }
         }

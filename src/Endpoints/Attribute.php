@@ -3,7 +3,7 @@
 namespace IntegraCommerce\Endpoints;
 
 use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\Attribute as AttributeModel;
+use \IntegraCommerce\Model\Attributes as AttributesModel;
 
 class Attribute extends EndpointBase
 {
@@ -12,11 +12,10 @@ class Attribute extends EndpointBase
      *
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Attribute/Attribute_GetAll
      *
-     * @return AttributeModel
+     * @return AttributesModel
      */
-    public function getAttributes(bool $isSku = true, bool $isProduct = true, int $page = 1, int $perPage = 100)
+    public function getAttributes(bool $isSku = true, bool $isProduct = true, int $page = 1, int $perPage = 100): AttributesModel
     {
-
         $response = $this->request('GET', 'Attribute', [
             'query' => [
                 'isSku' => $isSku ? 'true' : 'false',
@@ -26,6 +25,6 @@ class Attribute extends EndpointBase
             ]
         ])->getResponse();
 
-        return new AttributeModel($response);
+        return new AttributesModel($response);
     }
 }

@@ -9,22 +9,32 @@ use IntegraCommerce\Classes\ModelBase;
 class Attribute extends ModelBase
 {
     public static $attributeMap = array(
-        'Attributes' => [
-            "Name" => "string",
-        ],
+        "Name" => "string",
     );
 
     /**
-     * @var Collection
+     * @var string
      */
-    public $attributes;
+    protected $name;
 
     public function __construct(\StdClass $data)
     {
-        $this->page = $data->Page;
-        $this->perPage = $data->PerPage;
-        $this->total = $data->Total;
+        $this->name = $data->Name;
+    }
 
-        $this->attributes = new Collection($data->Attributes);
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 }
