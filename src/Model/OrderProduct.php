@@ -4,6 +4,7 @@
 namespace IntegraCommerce\Model;
 
 use IntegraCommerce\Classes\ModelBase;
+use IntegraCommerce\Helper\General;
 
 class OrderProduct extends ModelBase
 {
@@ -91,11 +92,11 @@ class OrderProduct extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getPrice(): string
+    public function getPrice(): float
     {
-        return $this->price;
+        return General::convertStringToFloat($this->price);
     }
 
     /**
@@ -107,11 +108,11 @@ class OrderProduct extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getFreight(): string
+    public function getFreight(): float
     {
-        return $this->freight;
+        return General::convertStringToFloat($this->freight);
     }
 
     /**
@@ -127,7 +128,7 @@ class OrderProduct extends ModelBase
      */
     public function getDiscount(): string
     {
-        return $this->discount;
+        return General::convertStringToFloat($this->discount);
     }
 
     /**
@@ -152,5 +153,13 @@ class OrderProduct extends ModelBase
     public function setIdOrderPackage(int $idOrderPackage): void
     {
         $this->idOrderPackage = $idOrderPackage;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotal(): float
+    {
+        return $this->getPrice() * $this->getQuantity();
     }
 }

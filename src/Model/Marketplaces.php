@@ -9,8 +9,6 @@ use IntegraCommerce\Traits\Paginable;
 
 class Marketplaces extends ModelBase
 {
-    use Paginable;
-
     static $attributeMap = [
         'Marketplaces' => [
             'Name' => 'string',
@@ -20,17 +18,13 @@ class Marketplaces extends ModelBase
     /**
      * @var Collection[Marketplace]
      */
-    public $marketplaces;
+    protected $marketplaces;
 
     public function __construct(\StdClass $marketplaces = null)
     {
         $this->marketplaces = new Collection();
 
         if ($marketplaces) {
-            $this->page = $marketplaces->Page;
-            $this->perPage = $marketplaces->PerPage;
-            $this->total = $marketplaces->Total;
-
             foreach ($marketplaces->Marketplaces as $marketplace) {
                 $this->marketplaces->push(new Marketplace($marketplace));
             }
@@ -38,7 +32,7 @@ class Marketplaces extends ModelBase
     }
 
     /**
-     * @return Collection
+     * @return Collection[Marketplace]
      */
     public function getMarketplaces(): Collection
     {

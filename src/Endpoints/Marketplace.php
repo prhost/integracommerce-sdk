@@ -3,7 +3,7 @@
 namespace IntegraCommerce\Endpoints;
 
 use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\Marketplace as MarketplaceModel;
+use \IntegraCommerce\Model\Marketplaces as MarketplacesModel;
 
 class Marketplace extends EndpointBase
 {
@@ -12,11 +12,11 @@ class Marketplace extends EndpointBase
      *
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Marketplace/Marketplace_GetAll
      *
-     * @return MarketplaceModel
+     * @return MarketplacesModel
      */
-    public function getMarketplaces(): MarketplaceModel
+    public function getMarketplaces(): MarketplacesModel
     {
         $marketplaces = $this->request('GET', 'Marketplace')->getResponse();
-        return new MarketplaceModel($marketplaces);
+        return new MarketplacesModel($marketplaces);
     }
 }

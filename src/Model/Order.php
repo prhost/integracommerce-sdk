@@ -6,6 +6,7 @@ namespace IntegraCommerce\Model;
 use Carbon\Carbon;
 use IntegraCommerce\Classes\Collection;
 use IntegraCommerce\Classes\ModelBase;
+use IntegraCommerce\Helper\General;
 
 class Order extends ModelBase
 {
@@ -829,11 +830,11 @@ class Order extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getTotalAmount(): string
+    public function getTotalAmount(): float
     {
-        return $this->totalAmount;
+        return General::convertStringToFloat($this->totalAmount);
     }
 
     /**
@@ -845,11 +846,11 @@ class Order extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getTotalTax(): string
+    public function getTotalTax(): float
     {
-        return $this->totalTax;
+        return General::convertStringToFloat($this->totalTax);
     }
 
     /**
@@ -861,11 +862,11 @@ class Order extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getTotalFreight(): string
+    public function getTotalFreight(): float
     {
-        return $this->totalFreight;
+        return General::convertStringToFloat($this->totalFreight);
     }
 
     /**
@@ -877,11 +878,11 @@ class Order extends ModelBase
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getTotalDiscount(): string
+    public function getTotalDiscount(): float
     {
-        return $this->totalDiscount;
+        return General::convertStringToFloat($this->totalDiscount);
     }
 
     /**

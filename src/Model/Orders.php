@@ -105,7 +105,7 @@ class Orders extends ModelBase
     }
 
     /**
-     * @return Collection[Order]
+     * @return Order[]
      */
     public function getOrders(): Collection
     {
