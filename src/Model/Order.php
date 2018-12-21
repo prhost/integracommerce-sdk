@@ -10,6 +10,16 @@ use IntegraCommerce\Helper\General;
 
 class Order extends ModelBase
 {
+    const STATUS_NEW = 'NEW';
+    const STATUS_APPROVED = 'APPROVED';
+    const STATUS_PROCESSING = 'PROCESSING';
+    const STATUS_INVOICED = 'INVOICED';
+    const STATUS_SHIPPED = 'SHIPPED';
+    const STATUS_DELIVERED = 'DELIVERED';
+    const STATUS_CANCELED = 'CANCELED';
+    const STATUS_UNAVAILABLE = 'UNAVAILABLE';
+    const STATUS_SHIPMENT_EXCEPTION = 'SHIPMENT_EXCEPTION';
+
     protected static $attributeMap = [
         'IdOrder'                         => 'string',
         'IdOrderMarketplace'              => 'string',
@@ -416,7 +426,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getIdOrderMarketplace(): string
+    public function getIdOrderMarketplace(): ?string
     {
         return $this->idOrderMarketplace;
     }
@@ -432,9 +442,9 @@ class Order extends ModelBase
     /**
      * @return Carbon
      */
-    public function getInsertedDate(): Carbon
+    public function getInsertedDate(): ?Carbon
     {
-        return Carbon::createFromTimeString($this->insertedDate);
+        return $this->insertedDate ? Carbon::createFromTimeString($this->insertedDate) : null;
     }
 
     /**
@@ -496,7 +506,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getMarketplaceName(): string
+    public function getMarketplaceName(): ?string
     {
         return $this->marketplaceName;
     }
@@ -512,7 +522,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getStoreName(): string
+    public function getStoreName(): ?string
     {
         return $this->storeName;
     }
@@ -528,7 +538,7 @@ class Order extends ModelBase
     /**
      * @return bool
      */
-    public function isUpdatedMarketplaceStatus(): bool
+    public function isUpdatedMarketplaceStatus(): ?bool
     {
         return $this->updatedMarketplaceStatus;
     }
@@ -544,7 +554,7 @@ class Order extends ModelBase
     /**
      * @return bool
      */
-    public function isInsertedErp(): bool
+    public function isInsertedErp(): ?bool
     {
         return $this->insertedErp;
     }
@@ -560,7 +570,7 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getEstimatedDeliveryDate()
+    public function getEstimatedDeliveryDate(): ?Carbon
     {
         return $this->estimatedDeliveryDate ? Carbon::createFromTimeString($this->estimatedDeliveryDate) : null;
     }
@@ -576,7 +586,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerPfCpf(): string
+    public function getCustomerPfCpf(): ?string
     {
         return $this->customerPfCpf;
     }
@@ -592,7 +602,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getReceiverName(): string
+    public function getReceiverName(): ?string
     {
         return $this->receiverName;
     }
@@ -608,7 +618,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerPfName()
+    public function getCustomerPfName(): ?string
     {
         return $this->customerPfName;
     }
@@ -624,7 +634,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerPjCnpj()
+    public function getCustomerPjCnpj(): ?string
     {
         return $this->customerPjCnpj;
     }
@@ -640,7 +650,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerPjCorporatename()
+    public function getCustomerPjCorporatename(): ?string
     {
         return $this->customerPjCorporatename;
     }
@@ -656,7 +666,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressStreet(): string
+    public function getDeliveryAddressStreet(): ?string
     {
         return $this->deliveryAddressStreet;
     }
@@ -672,7 +682,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressAdditionalInfo(): string
+    public function getDeliveryAddressAdditionalInfo(): ?string
     {
         return $this->deliveryAddressAdditionalInfo;
     }
@@ -688,7 +698,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressZipcode(): string
+    public function getDeliveryAddressZipcode(): ?string
     {
         return $this->deliveryAddressZipcode;
     }
@@ -704,7 +714,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressNeighborhood(): string
+    public function getDeliveryAddressNeighborhood(): ?string
     {
         return $this->deliveryAddressNeighborhood;
     }
@@ -720,7 +730,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressCity(): string
+    public function getDeliveryAddressCity(): ?string
     {
         return $this->deliveryAddressCity;
     }
@@ -736,7 +746,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressReference()
+    public function getDeliveryAddressReference(): ?string
     {
         return $this->deliveryAddressReference;
     }
@@ -752,7 +762,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressState()
+    public function getDeliveryAddressState(): ?string
     {
         return $this->deliveryAddressState;
     }
@@ -768,7 +778,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getDeliveryAddressNumber()
+    public function getDeliveryAddressNumber(): ?string
     {
         return $this->deliveryAddressNumber;
     }
@@ -784,7 +794,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getTelephoneMainNumber(): string
+    public function getTelephoneMainNumber(): ?string
     {
         return $this->telephoneMainNumber;
     }
@@ -800,7 +810,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getTelephoneSecundaryNumber(): string
+    public function getTelephoneSecundaryNumber(): ?string
     {
         return $this->telephoneSecundaryNumber;
     }
@@ -816,7 +826,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getTelephoneBusinessNumber(): string
+    public function getTelephoneBusinessNumber(): ?string
     {
         return $this->telephoneBusinessNumber;
     }
@@ -832,7 +842,7 @@ class Order extends ModelBase
     /**
      * @return float
      */
-    public function getTotalAmount(): float
+    public function getTotalAmount(): ?float
     {
         return General::convertStringToFloat($this->totalAmount);
     }
@@ -848,7 +858,7 @@ class Order extends ModelBase
     /**
      * @return float
      */
-    public function getTotalTax(): float
+    public function getTotalTax(): ?float
     {
         return General::convertStringToFloat($this->totalTax);
     }
@@ -864,7 +874,7 @@ class Order extends ModelBase
     /**
      * @return float
      */
-    public function getTotalFreight(): float
+    public function getTotalFreight(): ?float
     {
         return General::convertStringToFloat($this->totalFreight);
     }
@@ -880,7 +890,7 @@ class Order extends ModelBase
     /**
      * @return float
      */
-    public function getTotalDiscount(): float
+    public function getTotalDiscount(): ?float
     {
         return General::convertStringToFloat($this->totalDiscount);
     }
@@ -896,7 +906,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerMail()
+    public function getCustomerMail(): ?string
     {
         return $this->customerMail;
     }
@@ -912,7 +922,7 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getCustomerBirthDate()
+    public function getCustomerBirthDate(): ?Carbon
     {
         return $this->customerBirthDate ? Carbon::createFromFormat('d/m/Y', $this->customerBirthDate) : null;
     }
@@ -928,7 +938,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getCustomerPjIe()
+    public function getCustomerPjIe(): ?string
     {
         return $this->customerPjIe;
     }
@@ -944,7 +954,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getOrderStatus(): string
+    public function getOrderStatus(): ?string
     {
         return $this->orderStatus;
     }
@@ -960,7 +970,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getInvoicedNumber()
+    public function getInvoicedNumber(): ?string
     {
         return $this->invoicedNumber;
     }
@@ -976,7 +986,7 @@ class Order extends ModelBase
     /**
      * @return int
      */
-    public function getInvoicedLine()
+    public function getInvoicedLine(): ?int
     {
         return $this->invoicedLine;
     }
@@ -992,15 +1002,15 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getInvoicedIssueDate()
+    public function getInvoicedIssueDate(): ?Carbon
     {
         return $this->invoicedIssueDate ? Carbon::createFromTimeString($this->invoicedIssueDate) : null;
     }
 
     /**
-     * @param string $invoicedIssueDate
+     * @param Carbon $invoicedIssueDate
      */
-    public function setInvoicedIssueDate(string $invoicedIssueDate): void
+    public function setInvoicedIssueDate(Carbon $invoicedIssueDate): void
     {
         $this->invoicedIssueDate = $invoicedIssueDate;
     }
@@ -1008,7 +1018,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getInvoicedKey()
+    public function getInvoicedKey(): ?string
     {
         return $this->invoicedKey;
     }
@@ -1024,7 +1034,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getInvoicedDanfeXml()
+    public function getInvoicedDanfeXml(): ?string
     {
         return $this->invoicedDanfeXml;
     }
@@ -1040,7 +1050,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShippedTrackingUrl()
+    public function getShippedTrackingUrl(): ?string
     {
         return $this->shippedTrackingUrl;
     }
@@ -1056,7 +1066,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShippedTrackingProtocol()
+    public function getShippedTrackingProtocol(): ?string
     {
         return $this->shippedTrackingProtocol;
     }
@@ -1072,7 +1082,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShippedEstimatedDelivery()
+    public function getShippedEstimatedDelivery(): ?string
     {
         return $this->shippedEstimatedDelivery;
     }
@@ -1088,15 +1098,15 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getShippedCarrierDate()
+    public function getShippedCarrierDate(): ?Carbon
     {
         return $this->shippedCarrierDate ? Carbon::createFromTimeString($this->shippedCarrierDate) : null;
     }
 
     /**
-     * @param string $shippedCarrierDate
+     * @param Carbon $shippedCarrierDate
      */
-    public function setShippedCarrierDate(string $shippedCarrierDate): void
+    public function setShippedCarrierDate(Carbon $shippedCarrierDate): void
     {
         $this->shippedCarrierDate = $shippedCarrierDate;
     }
@@ -1104,7 +1114,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShippedCarrierName()
+    public function getShippedCarrierName(): ?string
     {
         return $this->shippedCarrierName;
     }
@@ -1120,7 +1130,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShipmentExceptionObservation()
+    public function getShipmentExceptionObservation(): ?string
     {
         return $this->shipmentExceptionObservation;
     }
@@ -1136,15 +1146,15 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getShipmentExceptionOccurrenceDate()
+    public function getShipmentExceptionOccurrenceDate(): ?Carbon
     {
         return $this->shipmentExceptionOccurrenceDate ? Carbon::createFromTimeString($this->shipmentExceptionOccurrenceDate) : null;
     }
 
     /**
-     * @param string $shipmentExceptionOccurrenceDate
+     * @param Carbon $shipmentExceptionOccurrenceDate
      */
-    public function setShipmentExceptionOccurrenceDate(string $shipmentExceptionOccurrenceDate): void
+    public function setShipmentExceptionOccurrenceDate(Carbon $shipmentExceptionOccurrenceDate): void
     {
         $this->shipmentExceptionOccurrenceDate = $shipmentExceptionOccurrenceDate;
     }
@@ -1152,15 +1162,15 @@ class Order extends ModelBase
     /**
      * @return Carbon|null
      */
-    public function getDeliveredDate()
+    public function getDeliveredDate(): ?Carbon
     {
         return $this->deliveredDate ? Carbon::createFromTimeString($this->deliveredDate) : null;
     }
 
     /**
-     * @param string $deliveredDate
+     * @param Carbon $deliveredDate
      */
-    public function setDeliveredDate(string $deliveredDate): void
+    public function setDeliveredDate(Carbon $deliveredDate): void
     {
         $this->deliveredDate = $deliveredDate;
     }
@@ -1168,7 +1178,7 @@ class Order extends ModelBase
     /**
      * @return string
      */
-    public function getShippedCodeERP(): string
+    public function getShippedCodeERP(): ?string
     {
         return $this->shippedCodeERP;
     }
@@ -1215,56 +1225,175 @@ class Order extends ModelBase
 
     public function toArray(): array
     {
-        return [
-            'idOrder'                         => $this->getIdOrder(),
-            'idOrderMarketplace'              => $this->getIdOrderMarketplace(),
-            'insertedDate'                    => $this->getInsertedDate(),
-            'purchasedDate'                   => $this->getPurchasedDate(),
-            'approvedDate'                    => $this->getApprovedDate(),
-            'updatedDate'                     => $this->getUpdatedDate(),
-            'marketplaceName'                 => $this->getMarketplaceName(),
-            'storeName'                       => $this->getStoreName(),
-            'updatedMarketplaceStatus'        => $this->isUpdatedMarketplaceStatus(),
-            'insertedErp'                     => $this->isInsertedErp(),
-            'estimatedDeliveryDate'           => $this->getEstimatedDeliveryDate(),
-            'customerPfCpf'                   => $this->getCustomerPfCpf(),
-            'receiverName'                    => $this->getReceiverName(),
-            'customerPfName'                  => $this->getCustomerPfName(),
-            'customerPjCnpj'                  => $this->getCustomerPjCnpj(),
-            'customerPjCorporatename'         => $this->getCustomerPjCorporatename(),
-            'deliveryAddressStreet'           => $this->getDeliveryAddressStreet(),
-            'deliveryAddressAdditionalInfo'   => $this->getDeliveryAddressAdditionalInfo(),
-            'deliveryAddressZipcode'          => $this->getDeliveryAddressZipcode(),
-            'deliveryAddressNeighborhood'     => $this->getDeliveryAddressNeighborhood(),
-            'deliveryAddressCity'             => $this->getDeliveryAddressCity(),
-            'deliveryAddressReference'        => $this->getDeliveryAddressReference(),
-            'deliveryAddressState'            => $this->getDeliveryAddressState(),
-            'deliveryAddressNumber'           => $this->getDeliveryAddressNumber(),
-            'telephoneMainNumber'             => $this->getTelephoneMainNumber(),
-            'telephoneSecundaryNumber'        => $this->getTelephoneSecundaryNumber(),
-            'telephoneBusinessNumber'         => $this->getTelephoneBusinessNumber(),
-            'totalAmount'                     => $this->getTotalAmount(),
-            'totalTax'                        => $this->getTotalTax(),
-            'totalFreight'                    => $this->getTotalFreight(),
-            'totalDiscount'                   => $this->getTotalDiscount(),
-            'customerMail'                    => $this->getCustomerMail(),
-            'customerBirthDate'               => $this->getCustomerBirthDate(),
-            'customerPjIe'                    => $this->getCustomerPjIe(),
-            'orderStatus'                     => $this->getOrderStatus(),
-            'invoicedNumber'                  => $this->getInvoicedNumber(),
-            'invoicedLine'                    => $this->getInvoicedLine(),
-            'invoicedIssueDate'               => $this->getInvoicedIssueDate(),
-            'invoicedKey'                     => $this->getInvoicedKey(),
-            'invoicedDanfeXml'                => $this->getInvoicedDanfeXml(),
-            'shippedTrackingUrl'              => $this->getShippedTrackingUrl(),
-            'shippedTrackingProtocol'         => $this->getShippedTrackingProtocol(),
-            'shippedEstimatedDelivery'        => $this->getShippedEstimatedDelivery(),
-            'shippedCarrierDate'              => $this->getShippedCarrierDate(),
-            'shippedCarrierName'              => $this->getShippedCarrierName(),
-            'shipmentExceptionObservation'    => $this->getShipmentExceptionObservation(),
-            'shipmentExceptionOccurrenceDate' => $this->getShipmentExceptionOccurrenceDate(),
-            'deliveredDate'                   => $this->getDeliveredDate(),
-            'shippedCodeERP'                  => $this->getShippedCodeERP(),
-        ];
+        $order = [];
+        if ($this->getIdOrder()) {
+            $order['IdOrder'] = $this->getIdOrder();
+        }
+        if ($this->getIdOrderMarketplace()) {
+            $order['IdOrderMarketplace'] = $this->getIdOrderMarketplace();
+        }
+        if ($this->getInsertedDate()) {
+            $order['InsertedDate'] = $this->getInsertedDate()->toDateTimeString();
+        }
+        if ($this->getPurchasedDate()) {
+            $order['PurchasedDate'] = $this->getPurchasedDate()->toDateTimeString();
+        }
+        if ($this->getApprovedDate()) {
+            $order['ApprovedDate'] = $this->getApprovedDate()->toDateTimeString();
+        }
+        if ($this->getUpdatedDate()) {
+            $order['UpdatedDate'] = $this->getUpdatedDate()->toDateTimeString();
+        }
+        if ($this->getMarketplaceName()) {
+            $order['MarketplaceName'] = $this->getMarketplaceName();
+        }
+        if ($this->getStoreName()) {
+            $order['StoreName'] = $this->getStoreName();
+        }
+        if ($this->isUpdatedMarketplaceStatus()) {
+            $order['UpdatedMarketplaceStatus'] = $this->isUpdatedMarketplaceStatus();
+        }
+        if ($this->isInsertedErp()) {
+            $order['InsertedErp'] = $this->isInsertedErp();
+        }
+        if ($this->getEstimatedDeliveryDate()) {
+            $order['EstimatedDeliveryDate'] = $this->getEstimatedDeliveryDate()->toDateTimeString();
+        }
+        if ($this->getCustomerPfCpf()) {
+            $order['CustomerPfCpf'] = $this->getCustomerPfCpf();
+        }
+        if ($this->getReceiverName()) {
+            $order['ReceiverName'] = $this->getReceiverName();
+        }
+        if ($this->getCustomerPfName()) {
+            $order['CustomerPfName'] = $this->getCustomerPfName();
+        }
+        if ($this->getCustomerPjCnpj()) {
+            $order['CustomerPjCnpj'] = $this->getCustomerPjCnpj();
+        }
+        if ($this->getCustomerPjCorporatename()) {
+            $order['CustomerPjCorporatename'] = $this->getCustomerPjCorporatename();
+        }
+        if ($this->getDeliveryAddressStreet()) {
+            $order['DeliveryAddressStreet'] = $this->getDeliveryAddressStreet();
+        }
+        if ($this->getDeliveryAddressAdditionalInfo()) {
+            $order['DeliveryAddressAdditionalInfo'] = $this->getDeliveryAddressAdditionalInfo();
+        }
+        if ($this->getDeliveryAddressZipcode()) {
+            $order['DeliveryAddressZipcode'] = $this->getDeliveryAddressZipcode();
+        }
+        if ($this->getDeliveryAddressNeighborhood()) {
+            $order['DeliveryAddressNeighborhood'] = $this->getDeliveryAddressNeighborhood();
+        }
+        if ($this->getDeliveryAddressCity()) {
+            $order['DeliveryAddressCity'] = $this->getDeliveryAddressCity();
+        }
+        if ($this->getDeliveryAddressReference()) {
+            $order['DeliveryAddressReference'] = $this->getDeliveryAddressReference();
+        }
+        if ($this->getDeliveryAddressState()) {
+            $order['DeliveryAddressState'] = $this->getDeliveryAddressState();
+        }
+        if ($this->getDeliveryAddressNumber()) {
+            $order['DeliveryAddressNumber'] = $this->getDeliveryAddressNumber();
+        }
+        if ($this->getTelephoneMainNumber()) {
+            $order['TelephoneMainNumber'] = $this->getTelephoneMainNumber();
+        }
+        if ($this->getTelephoneSecundaryNumber()) {
+            $order['TelephoneSecundaryNumber'] = $this->getTelephoneSecundaryNumber();
+        }
+        if ($this->getTelephoneBusinessNumber()) {
+            $order['TelephoneBusinessNumber'] = $this->getTelephoneBusinessNumber();
+        }
+        if ($this->getTotalAmount()) {
+            $order['TotalAmount'] = $this->getTotalAmount();
+        }
+        if ($this->getTotalTax()) {
+            $order['TotalTax'] = $this->getTotalTax();
+        }
+        if ($this->getTotalFreight()) {
+            $order['TotalFreight'] = $this->getTotalFreight();
+        }
+        if ($this->getTotalDiscount()) {
+            $order['TotalDiscount'] = $this->getTotalDiscount();
+        }
+        if ($this->getCustomerMail()) {
+            $order['CustomerMail'] = $this->getCustomerMail();
+        }
+        if ($this->getCustomerBirthDate()) {
+            $order['CustomerBirthDate'] = $this->getCustomerBirthDate()->toDateTimeString();
+        }
+        if ($this->getCustomerPjIe()) {
+            $order['CustomerPjIe'] = $this->getCustomerPjIe();
+        }
+        if ($this->getOrderStatus()) {
+            $order['OrderStatus'] = $this->getOrderStatus();
+        }
+        if ($this->getInvoicedNumber()) {
+            $order['InvoicedNumber'] = $this->getInvoicedNumber();
+        }
+        if ($this->getInvoicedLine()) {
+            $order['InvoicedLine'] = $this->getInvoicedLine();
+        }
+        if ($this->getInvoicedIssueDate()) {
+            $order['InvoicedIssueDate'] = $this->getInvoicedIssueDate()->toDateTimeString();
+        }
+        if ($this->getInvoicedKey()) {
+            $order['InvoicedKey'] = $this->getInvoicedKey();
+        }
+        if ($this->getInvoicedDanfeXml()) {
+            $order['InvoicedDanfeXml'] = $this->getInvoicedDanfeXml();
+        }
+        if ($this->getShippedTrackingUrl()) {
+            $order['ShippedTrackingUrl'] = $this->getShippedTrackingUrl();
+        }
+        if ($this->getShippedTrackingProtocol()) {
+            $order['ShippedTrackingProtocol'] = $this->getShippedTrackingProtocol();
+        }
+        if ($this->getShippedEstimatedDelivery()) {
+            $order['ShippedEstimatedDelivery'] = $this->getShippedEstimatedDelivery();
+        }
+        if ($this->getShippedCarrierDate()) {
+            $order['ShippedCarrierDate'] = $this->getShippedCarrierDate()->toDateTimeString();
+        }
+        if ($this->getShippedCarrierName()) {
+            $order['ShippedCarrierName'] = $this->getShippedCarrierName();
+        }
+        if ($this->getShipmentExceptionObservation()) {
+            $order['ShipmentExceptionObservation'] = $this->getShipmentExceptionObservation();
+        }
+        if ($this->getShipmentExceptionOccurrenceDate()) {
+            $order['ShipmentExceptionOccurrenceDate'] = $this->getShipmentExceptionOccurrenceDate()->toDateTimeString();
+        }
+        if ($this->getDeliveredDate()) {
+            $order['DeliveredDate'] = $this->getDeliveredDate()->toDateTimeString();
+        }
+        if ($this->getShippedCodeERP()) {
+            $order['ShippedCodeERP'] = $this->getShippedCodeERP();
+        }
+
+        return $order;
+    }
+
+    /**
+     * Retorna a lista de status e suas legendas
+     *
+     * @return Collection
+     */
+    public static function statues(): Collection
+    {
+        return new Collection([
+            'NEW'                => 'Pedidos novos',
+            'APPROVED'           => 'Pedido aprovado (pagamento OK)',
+            'PROCESSING'         => 'Pedido aguardando emissão de nota fiscal',
+            'INVOICED'           => 'Pedido aguardando expedição',
+            'SHIPPED'            => 'Pedido aguardando entrega',
+            'DELIVERED'          => 'Pedido entregue',
+            'SHIPMENT_EXCEPTION' => 'Pedido com exceção de transporte',
+            'UNAVAILABLE'        => 'Pedido sem estoque',
+            'CANCELED'           => 'Pedido cancelado',
+        ]);
     }
 }

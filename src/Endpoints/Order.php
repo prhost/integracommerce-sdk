@@ -9,15 +9,6 @@ use \IntegraCommerce\Model\Orders as OrdersModel;
 
 class Order extends EndpointBase
 {
-    const ORDER_STATUS_NEW = 'New';
-    const ORDER_STATUS_APPROVED = 'Approved';
-    const ORDER_STATUS_PROCESSING = 'Processing';
-    const ORDER_STATUS_INVOICED = 'Invoiced';
-    const ORDER_STATUS_SHIPPED = 'Shipped';
-    const ORDER_STATUS_DELIVERED = 'Delivered';
-    const ORDER_STATUS_CANCELED = 'Canceled';
-    const ORDER_STATUS_SHIPMENT_EXCEPTION = 'ShipmentException';
-
     /**
      * Método utilizado para recuperar uma categoria pelo ID.
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Order/Order_GetById
@@ -31,10 +22,10 @@ class Order extends EndpointBase
         return new OrderModel($response);
     }
 
-    public function createOrders(Orders $categories)
+    public function createOrders(Orders $orders)
     {
         $this->request('POST', 'Order', [
-            'json' => $categories->getOrders()->toArray()
+            'json' => $orders->getOrders()->toArray()
         ]);
     }
 
@@ -64,5 +55,12 @@ class Order extends EndpointBase
         ])->getResponse();
 
         return new OrdersModel($response);
+    }
+
+    public function updateOrder(\IntegraCommerce\Model\Order $order)
+    {
+        $this->request('PUT', 'Order', [
+            'json' => $order->toArray()
+        ]);
     }
 }

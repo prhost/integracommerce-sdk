@@ -62,8 +62,8 @@ class IntegraCommerce
                 'username' => $username,
                 'password' => $password,
                 'base_uri' => $sandbox ? self::$uriHomologacao : self::$uriProducao,
-                'handler' => $stack,
-                'headers' => [
+                'handler'  => $stack,
+                'headers'  => [
                     'Accept' => 'application/json'
                 ]
             ]);
