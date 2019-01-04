@@ -13,15 +13,20 @@ class Price extends EndpointBase
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Price/Price_Update
      *
      * @param PricesModel $prices
+     * @return array
      */
-    public function updatePrice(PricesModel $prices)
+    public function updatePrice(PricesModel $prices): array
     {
+        $responses = [];
+
         /** @var Collection $price */
         foreach ($prices->getPrices()->chunk(100) as $price) {
-            $this->request('PUT', 'Price', [
+            $responses[] = $this->request('PUT', 'Price', [
                 'json' => $price->values()->toArray()
             ]);
         }
+
+        return $responses;
     }
 
     /**
@@ -29,14 +34,19 @@ class Price extends EndpointBase
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Price/Price_Batch
      *
      * @param PricesModel $prices
+     * @return array
      */
-    public function updatePriceBatch(PricesModel $prices)
+    public function updatePriceBatch(PricesModel $prices): array
     {
+        $responses = [];
+
         /** @var Collection $price */
         foreach ($prices->getPrices()->chunk(100) as $price) {
-            $this->request('PUT', 'Price/Batch', [
+            $responses[] = $this->request('PUT', 'Price/Batch', [
                 'json' => $price->values()->toArray()
             ]);
         }
+
+        return $responses;
     }
 }
