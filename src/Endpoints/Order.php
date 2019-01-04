@@ -13,10 +13,10 @@ class Order extends EndpointBase
      * Método utilizado para recuperar uma categoria pelo ID.
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Order/Order_GetById
      *
-     * @param string $id Id da categoria
+     * @param string|int $id Id da categoria
      * @return OrderModel
      */
-    public function getOrderById(string $id): OrderModel
+    public function getOrderById($id): OrderModel
     {
         $response = $this->request('GET', 'Order/' . $id)->getResponse();
         return new OrderModel($response);
