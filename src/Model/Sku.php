@@ -316,7 +316,7 @@ class Sku extends ModelBase
     /**
      * @return int
      */
-    public function getCodeEan(): int
+    public function getCodeEan():? int
     {
         return $this->codeEan;
     }
