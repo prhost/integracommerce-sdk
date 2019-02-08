@@ -924,7 +924,7 @@ class Order extends ModelBase
      */
     public function getCustomerBirthDate(): ?Carbon
     {
-        return $this->customerBirthDate ? Carbon::createFromFormat('d/m/Y', $this->customerBirthDate) : null;
+        return $this->customerBirthDate ? Carbon::createFromFormat('Y-m-d', $this->customerBirthDate) : null;
     }
 
     /**
