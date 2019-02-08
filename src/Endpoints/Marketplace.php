@@ -1,9 +1,9 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\Marketplaces as MarketplacesModel;
+use Integracommerce\Classes\EndpointBase;
+use \Integracommerce\Model\Marketplaces as MarketplacesModel;
 
 class Marketplace extends EndpointBase
 {

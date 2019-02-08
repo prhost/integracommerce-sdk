@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Traits;
+namespace Integracommerce\Traits;
 
 
 trait Paginable

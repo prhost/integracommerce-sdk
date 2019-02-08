@@ -1,6 +1,6 @@
 {
   "name": "prhost/integracommerce-sdk",
-  "description": "SDK para integracao com IntegraCommerce",
+  "description": "SDK para integracao com Integracommerce",
   "type": "library",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "IntegraCommerce\\": "src/"
+      "Integracommerce\\": "src/"
     }
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Client;
+namespace Integracommerce\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;

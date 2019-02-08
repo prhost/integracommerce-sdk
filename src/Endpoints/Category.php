@@ -1,11 +1,11 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use IntegraCommerce\Model\Categories;
-use \IntegraCommerce\Model\Category as CategoryModel;
-use \IntegraCommerce\Model\Categories as CategoriesModel;
+use Integracommerce\Classes\EndpointBase;
+use Integracommerce\Model\Categories;
+use \Integracommerce\Model\Category as CategoryModel;
+use \Integracommerce\Model\Categories as CategoriesModel;
 
 class Category extends EndpointBase
 {

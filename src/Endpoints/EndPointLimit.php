@@ -1,9 +1,9 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\EndPointLimit as EndPointLimitModel;
+use Integracommerce\Classes\EndpointBase;
+use \Integracommerce\Model\EndPointLimit as EndPointLimitModel;
 
 class EndPointLimit extends EndpointBase
 {

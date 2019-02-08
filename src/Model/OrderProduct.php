@@ -1,10 +1,10 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
-use IntegraCommerce\Classes\ModelBase;
-use IntegraCommerce\Helper\General;
+use Integracommerce\Classes\ModelBase;
+use Integracommerce\Helper\General;
 
 class OrderProduct extends ModelBase
 {

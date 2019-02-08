@@ -1,3 +1,3 @@
-# SDK PHP para API IntegraCommerce
+# SDK PHP para API Integracommerce
 
 ### Work in progress

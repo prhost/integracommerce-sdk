@@ -1,10 +1,10 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\Collection;
-use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\Stocks as StockModel;
+use Integracommerce\Classes\Collection;
+use Integracommerce\Classes\EndpointBase;
+use \Integracommerce\Model\Stocks as StockModel;
 
 class Stock extends EndpointBase
 {

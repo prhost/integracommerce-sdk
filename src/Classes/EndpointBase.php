@@ -1,10 +1,10 @@
 <?php
 
-namespace IntegraCommerce\Classes;
+namespace Integracommerce\Classes;
 
 
-use IntegraCommerce\Client\ApiClient;
-use IntegraCommerce\Client\Response;
+use Integracommerce\Client\ApiClient;
+use Integracommerce\Client\Response;
 
 abstract class EndpointBase
 {
@@ -16,10 +16,10 @@ abstract class EndpointBase
     public function __construct($apiClient = null)
     {
         if (null === $apiClient) {
-            if (IntegraCommerce::$apiClient === null) {
-                IntegraCommerce::init();
+            if (Integracommerce::$apiClient === null) {
+                Integracommerce::init();
             } else
-                $this->apiClient = IntegraCommerce::$apiClient;
+                $this->apiClient = Integracommerce::$apiClient;
         } else {
             $this->apiClient = $apiClient;
         }

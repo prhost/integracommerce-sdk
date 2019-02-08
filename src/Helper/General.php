@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Helper;
+namespace Integracommerce\Helper;
 
 
 class General

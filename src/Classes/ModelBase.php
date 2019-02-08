@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Classes;
+namespace Integracommerce\Classes;
 
 
 abstract class ModelBase

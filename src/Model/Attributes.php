@@ -1,11 +1,11 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
-use IntegraCommerce\Classes\Collection;
-use IntegraCommerce\Classes\ModelBase;
-use IntegraCommerce\Traits\Paginable;
+use Integracommerce\Classes\Collection;
+use Integracommerce\Classes\ModelBase;
+use Integracommerce\Traits\Paginable;
 
 class Attributes extends ModelBase
 {

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
 use Carbon\Carbon;
-use IntegraCommerce\Classes\Collection;
-use IntegraCommerce\Classes\ModelBase;
-use IntegraCommerce\Helper\General;
+use Integracommerce\Classes\Collection;
+use Integracommerce\Classes\ModelBase;
+use Integracommerce\Helper\General;
 
 class Order extends ModelBase
 {

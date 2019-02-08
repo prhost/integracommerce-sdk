@@ -1,10 +1,10 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use IntegraCommerce\Client\Response;
-use \IntegraCommerce\Model\Sku as SkuModel;
+use Integracommerce\Classes\EndpointBase;
+use Integracommerce\Client\Response;
+use \Integracommerce\Model\Sku as SkuModel;
 
 class Sku extends EndpointBase
 {

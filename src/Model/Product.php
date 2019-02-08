@@ -1,10 +1,10 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
-use IntegraCommerce\Classes\Collection;
-use IntegraCommerce\Classes\ModelBase;
+use Integracommerce\Classes\Collection;
+use Integracommerce\Classes\ModelBase;
 
 class Product extends ModelBase
 {
@@ -106,7 +106,7 @@ class Product extends ModelBase
             $this->setActive($product->Active);
 
             foreach ($product->Categories as $category) {
-                $categoryModel = new \IntegraCommerce\Model\Category();
+                $categoryModel = new \Integracommerce\Model\Category();
                 $categoryModel->setId($category->Id);
                 $categoryModel->setName($category->Name);
                 $categoryModel->setParentId((int)$category->ParentId);

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
-use IntegraCommerce\Classes\ModelBase;
+use Integracommerce\Classes\ModelBase;
 
 class Category extends ModelBase
 {

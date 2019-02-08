@@ -1,14 +1,14 @@
 <?php
 
-namespace IntegraCommerce\Classes;
+namespace Integracommerce\Classes;
 
-use IntegraCommerce\Client\ApiClient;
-use IntegraCommerce\Client\Response;
+use Integracommerce\Client\ApiClient;
+use Integracommerce\Client\Response;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\ResponseInterface;
 
-class IntegraCommerce
+class Integracommerce
 {
     /**
      * Username for HTTP basic authentication

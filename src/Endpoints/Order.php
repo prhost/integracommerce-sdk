@@ -1,11 +1,11 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use IntegraCommerce\Model\Orders;
-use \IntegraCommerce\Model\Order as OrderModel;
-use \IntegraCommerce\Model\Orders as OrdersModel;
+use Integracommerce\Classes\EndpointBase;
+use Integracommerce\Model\Orders;
+use \Integracommerce\Model\Order as OrderModel;
+use \Integracommerce\Model\Orders as OrdersModel;
 
 class Order extends EndpointBase
 {
@@ -57,7 +57,7 @@ class Order extends EndpointBase
         return new OrdersModel($response);
     }
 
-    public function updateOrder(\IntegraCommerce\Model\Order $order)
+    public function updateOrder(\Integracommerce\Model\Order $order)
     {
         $this->request('PUT', 'Order', [
             'json' => $order->toArray()

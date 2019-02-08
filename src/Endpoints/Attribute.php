@@ -1,9 +1,9 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use \IntegraCommerce\Model\Attributes as AttributesModel;
+use Integracommerce\Classes\EndpointBase;
+use \Integracommerce\Model\Attributes as AttributesModel;
 
 class Attribute extends EndpointBase
 {

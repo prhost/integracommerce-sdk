@@ -1,10 +1,10 @@
 <?php
 
-namespace IntegraCommerce\Endpoints;
+namespace Integracommerce\Endpoints;
 
-use IntegraCommerce\Classes\EndpointBase;
-use IntegraCommerce\Client\Response;
-use \IntegraCommerce\Model\Product as ProductModel;
+use Integracommerce\Classes\EndpointBase;
+use Integracommerce\Client\Response;
+use \Integracommerce\Model\Product as ProductModel;
 
 class Product extends EndpointBase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Classes;
+namespace Integracommerce\Classes;
 
 
 class Collection extends \Illuminate\Support\Collection

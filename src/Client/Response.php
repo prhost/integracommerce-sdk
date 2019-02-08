@@ -1,6 +1,6 @@
 <?php
 
-namespace IntegraCommerce\Client;
+namespace Integracommerce\Client;
 
 
 class Response extends \GuzzleHttp\Psr7\Response

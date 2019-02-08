@@ -1,10 +1,10 @@
 <?php
 
 
-namespace IntegraCommerce\Model;
+namespace Integracommerce\Model;
 
-use IntegraCommerce\Classes\Collection;
-use IntegraCommerce\Classes\ModelBase;
+use Integracommerce\Classes\Collection;
+use Integracommerce\Classes\ModelBase;
 
 class Sku extends ModelBase
 {
