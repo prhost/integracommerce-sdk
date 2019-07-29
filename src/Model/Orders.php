@@ -98,8 +98,10 @@ class Orders extends ModelBase
             $this->perPage = $data->PerPage;
             $this->total = $data->Total;
 
-            foreach ($data->Orders as $order) {
-                $this->orders->push(new Order($order));
+            if ($data->Orders) {
+                foreach ($data->Orders as $order) {
+                    $this->orders->push(new Order($order));
+                }
             }
         }
     }

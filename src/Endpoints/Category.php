@@ -46,7 +46,7 @@ class Category extends EndpointBase
 
     public function createCategories(Categories $categories)
     {
-        $this->request('POST', 'Category', [
+        return $this->request('POST', 'Category', [
             'json' => $categories->getCategories()->toArray()
         ]);
     }
