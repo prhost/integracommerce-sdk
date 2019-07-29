@@ -300,7 +300,7 @@ class Sku extends ModelBase
     /**
      * @return float
      */
-    public function getWeight(): float
+    public function getWeight(): string
     {
         return $this->weight;
     }
@@ -316,7 +316,7 @@ class Sku extends ModelBase
     /**
      * @return int
      */
-    public function getCodeEan():? int
+    public function getCodeEan():? string
     {
         return $this->codeEan;
     }
