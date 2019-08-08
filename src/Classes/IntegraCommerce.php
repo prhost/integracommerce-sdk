@@ -8,7 +8,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use Psr\Http\Message\ResponseInterface;
 
-class Integracommerce
+class IntegraCommerce
 {
     /**
      * Username for HTTP basic authentication
