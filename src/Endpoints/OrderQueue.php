@@ -33,11 +33,13 @@ class OrderQueue extends EndpointBase
      * @see https://integra-api-homolog.azurewebsites.net/swagger/ui/index#!/OrderQueue/OrderQueue_Update
      * @param int $id
      */
-    public function confirmOrder(int $ids)
+    public function confirmOrder(int $id)
     {
         $this->request('PUT', 'OrderQueue', [
             'json' => [
-                'Id' => $id
+                [
+                    'Id' => $id
+                ]
             ]
         ]);
     }
