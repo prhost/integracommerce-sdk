@@ -28,6 +28,7 @@ class Stock extends EndpointBase
      * Método utilizado para criar ou atualizar o estoque de um ou mais skus para processamento posterior.
      * @see https://api.integracommerce.com.br/swagger/ui/index#!/Stock/Stock_Batch
      *
+     * @deprecated Metodo não existe mais
      * @param StockModel $sku
      */
     public function updateStockBatch(StockModel $stocks)

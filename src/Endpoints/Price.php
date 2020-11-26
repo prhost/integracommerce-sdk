@@ -35,6 +35,7 @@ class Price extends EndpointBase
      *
      * @param PricesModel $prices
      * @return array
+     * @deprecated Metodo não existe mais
      */
     public function updatePriceBatch(PricesModel $prices): array
     {
